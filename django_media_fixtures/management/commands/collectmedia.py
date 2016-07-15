@@ -1,10 +1,8 @@
-# -​*- coding: utf-8 -*​-
 from __future__ import unicode_literals
 
 import os
 from collections import OrderedDict
 
-#from django.contrib.staticfiles.finders import get_finders
 from django.contrib.staticfiles.storage import staticfiles_storage
 from django.core.files.storage import FileSystemStorage
 from django.core.management.base import BaseCommand, CommandError
@@ -34,7 +32,6 @@ class Command(BaseCommand):
         self.symlinked_files = []
         self.unmodified_files = []
         self.post_processed_files = []
-        #self.storage = staticfiles_storage
         self.storage = media_storage
         self.style = no_style()
         try:
