@@ -15,7 +15,7 @@ Installation
 
 .. code-block:: python
 
-   pip install django-media-fixtures==0.0.1
+   pip install django-media-fixtures==0.0.2
 
 Then, put 'django_media_fixtures' on your INSTALLED_APPS (on settings.py), just below 'django.contrib.staticfiles'.
 
