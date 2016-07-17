@@ -1,3 +1,7 @@
+.. image:: https://travis-ci.org/adrianoveiga/django-media-fixtures.svg?branch=master
+    :target: https://travis-ci.org/adrianoveiga/django-media-fixtures
+
+
 django-media-fixtures
 ------------------------
 

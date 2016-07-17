@@ -8,5 +8,6 @@ from django.core.management import call_command
 class TestCollectMedia(TestCase):
  
     def test_sample_image_media_collected(self):
+        self.assertEqual(media_storage.exists('uploads/foomodel/img/board.jpg'), False)
         call_command('collectmedia', verbosity=3, interactive=False)
         self.assertEqual(media_storage.exists('uploads/foomodel/img/board.jpg'), True)
