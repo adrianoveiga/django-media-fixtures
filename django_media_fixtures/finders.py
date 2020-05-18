@@ -1,5 +1,6 @@
 import os
 from collections import OrderedDict
+from functools import lru_cache
 
 from django.apps import apps
 from django.conf import settings
@@ -8,11 +9,12 @@ from django.core.exceptions import ImproperlyConfigured
 from django.core.files.storage import (
     FileSystemStorage, Storage, default_storage,
 )
-from django.utils import lru_cache, six
 from django.utils._os import safe_join
 from django.utils.module_loading import import_string
 
 from django.contrib.staticfiles.finders import BaseFinder
+
+import six
 
 # To keep track on which directories the finder has searched the media files.
 searched_locations = []
@@ -176,7 +178,7 @@ def get_finders():
         yield get_finder(finder_path)
 
 
-@lru_cache.lru_cache(maxsize=None)
+@lru_cache(maxsize=None)
 def get_finder(import_path):
     """
     Imports the media fixtures files finder class described by import_path, where
