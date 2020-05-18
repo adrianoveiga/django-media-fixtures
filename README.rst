@@ -1,17 +1,20 @@
-|badge1| |badge2| |badge3|
+|badge1| |badge2| |badge3| |badge4|
 
 .. |badge1| image:: https://travis-ci.org/adrianoveiga/django-media-fixtures.svg?branch=master
     :target: https://travis-ci.org/adrianoveiga/django-media-fixtures
     :alt: Build Status
 
-.. |badge2| image:: https://badge.fury.io/py/django-media-fixtures.svg
-    :target: https://badge.fury.io/py/django-media-fixtures
+.. |badge2| image:: https://img.shields.io/pypi/v/django-media-fixtures.svg
+    :target: https://pypi.org/project/django-media-fixtures/
     :alt: PyPI Version
 
 .. |badge3| image:: https://img.shields.io/pypi/pyversions/django-media-fixtures
-    :target: https://img.shields.io/pypi/pyversions/django-media-fixtures
+    :target: https://pypi.org/project/django-media-fixtures/
     :alt: Python Versions
 
+.. |badge4| image:: https://img.shields.io/pypi/l/django-media-fixtures
+    :target: https://pypi.org/project/django-media-fixtures/
+    :alt: License
 
 django-media-fixtures
 ------------------------
@@ -22,7 +25,9 @@ Simple project to copy media files (intended for fixtures loads), pretty much as
 Dependencies
 ------------
 
-- Django 1.8 or higher (not tested on previous versions)
+- Django >= 1.8 and < 3.0
+
+**Note**: This is the last version supporting Python2!
 
 
 Installation
