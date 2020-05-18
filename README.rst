@@ -1,18 +1,18 @@
 |badge1| |badge2| |badge3| |badge4|
 
-.. |badge1| image:: https://travis-ci.org/adrianoveiga/django-media-fixtures.svg?branch=master
+.. |badge1| image:: https://travis-ci.org/adrianoveiga/django-media-fixtures.svg?branch=version/0.1.x
     :target: https://travis-ci.org/adrianoveiga/django-media-fixtures
     :alt: Build Status
 
-.. |badge2| image:: https://img.shields.io/pypi/v/django-media-fixtures.svg
+.. |badge2| image:: https://img.shields.io/pypi/v/django-media-fixtures/v0.1.0.svg
     :target: https://pypi.org/project/django-media-fixtures/
     :alt: PyPI Version
 
-.. |badge3| image:: https://img.shields.io/pypi/pyversions/django-media-fixtures
+.. |badge3| image:: https://img.shields.io/pypi/pyversions/django-media-fixtures/v0.1.0
     :target: https://pypi.org/project/django-media-fixtures/
     :alt: Python Versions
 
-.. |badge4| image:: https://img.shields.io/pypi/l/django-media-fixtures
+.. |badge4| image:: https://img.shields.io/pypi/l/django-media-fixtures/v0.1.0
     :target: https://pypi.org/project/django-media-fixtures/
     :alt: License
 
