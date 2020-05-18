@@ -14,7 +14,6 @@ from django.utils.module_loading import import_string
 
 from django.contrib.staticfiles.finders import BaseFinder
 
-import six
 
 # To keep track on which directories the finder has searched the media files.
 searched_locations = []
@@ -124,7 +123,7 @@ class AppDirectoriesFinder(BaseFinder):
         """
         List all files in all app storages.
         """
-        for storage in six.itervalues(self.storages):
+        for storage in self.storages.values():
             if storage.exists(''):  # check if storage location exists
                 for path in utils.get_files(storage, ignore_patterns):
                     yield path, storage
