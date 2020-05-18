@@ -1,18 +1,18 @@
 |badge1| |badge2| |badge3| |badge4|
 
-.. |badge1| image:: https://travis-ci.org/adrianoveiga/django-media-fixtures.svg?branch=version/0.1.x
+.. |badge1| image:: https://travis-ci.org/adrianoveiga/django-media-fixtures.svg?branch=master
     :target: https://travis-ci.org/adrianoveiga/django-media-fixtures
     :alt: Build Status
 
-.. |badge2| image:: https://img.shields.io/pypi/v/django-media-fixtures/v0.1.0.svg
+.. |badge2| image:: https://img.shields.io/pypi/v/django-media-fixtures/
     :target: https://pypi.org/project/django-media-fixtures/
     :alt: PyPI Version
 
-.. |badge3| image:: https://img.shields.io/pypi/pyversions/django-media-fixtures/v0.1.0
+.. |badge3| image:: https://img.shields.io/pypi/pyversions/django-media-fixtures/
     :target: https://pypi.org/project/django-media-fixtures/
     :alt: Python Versions
 
-.. |badge4| image:: https://img.shields.io/pypi/l/django-media-fixtures/v0.1.0
+.. |badge4| image:: https://img.shields.io/pypi/l/django-media-fixtures/
     :target: https://pypi.org/project/django-media-fixtures/
     :alt: License
 
@@ -25,9 +25,10 @@ Simple project to copy media files (intended for fixtures loads), pretty much as
 Dependencies
 ------------
 
-- Django >= 1.8 and < 3.0
+- Python 3.5+
+- Django 1.8+
 
-**Note**: This is the last version supporting Python2!
+**Note**: The version (v1.x.x) dropped support of Python2! If you still need Python2, please check the last version of `v0.1.x series <https://github.com/adrianoveiga/django-media-fixtures/tree/version/0.1.x>`_
 
 
 Installation
@@ -35,7 +36,7 @@ Installation
 
 .. code-block:: python
 
-   pip install django-media-fixtures==0.1.0
+   pip install django-media-fixtures==1.0.0
 
 Then, put 'django_media_fixtures' on your INSTALLED_APPS (on settings.py), just below 'django.contrib.staticfiles'.
 

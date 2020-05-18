@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from django.test import TestCase
 from django_media_fixtures import finders
 from django.core.files.storage import default_storage as media_storage
