@@ -72,3 +72,13 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Media fixtures configurations
+
+MEDIA_FIXTURES_FILES_FINDERS = (
+    'django_media_fixtures.finders.FileSystemFinder',      # combined with MEDIA_FIXTURES_FILES_DIRS, choose specific folders
+    'django_media_fixtures.finders.AppDirectoriesFinder',  # default (if you do not set MEDIA_FIXTURES_FILES_FINDERS)
+)
+MEDIA_FIXTURES_FILES_DIRS = [
+    os.path.join(BASE_DIR, 'extra_media_fixtures'),
+]
