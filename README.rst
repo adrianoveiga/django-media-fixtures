@@ -1,5 +1,6 @@
-.. image:: https://travis-ci.org/adrianoveiga/django-media-fixtures.svg?branch=master
-    :target: https://travis-ci.org/adrianoveiga/django-media-fixtures
+[![Build Status](https://travis-ci.org/adrianoveiga/django-media-fixtures.svg?branch=master)](https://travis-ci.org/adrianoveiga/django-media-fixtures)
+[![PyPI version](https://badge.fury.io/py/django-media-fixtures.svg)](https://badge.fury.io/py/django-media-fixtures)
+![Python versions](https://img.shields.io/pypi/pyversions/django-media-fixtures)
 
 
 django-media-fixtures
