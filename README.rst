@@ -1,5 +1,16 @@
-.. image:: https://travis-ci.org/adrianoveiga/django-media-fixtures.svg?branch=master
+|badge1| |badge2| |badge3|
+
+.. |badge1| image:: https://travis-ci.org/adrianoveiga/django-media-fixtures.svg?branch=master
     :target: https://travis-ci.org/adrianoveiga/django-media-fixtures
+    :alt: Build Status
+
+.. |badge2| image:: https://badge.fury.io/py/django-media-fixtures.svg
+    :target: https://badge.fury.io/py/django-media-fixtures
+    :alt: PyPI Version
+
+.. |badge3| image:: https://img.shields.io/pypi/pyversions/django-media-fixtures
+    :target: https://img.shields.io/pypi/pyversions/django-media-fixtures
+    :alt: Python Versions
 
 
 django-media-fixtures
