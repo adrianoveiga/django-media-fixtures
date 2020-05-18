@@ -1,6 +1,20 @@
-.. image:: https://travis-ci.org/adrianoveiga/django-media-fixtures.svg?branch=master
-    :target: https://travis-ci.org/adrianoveiga/django-media-fixtures
+|badge1| |badge2| |badge3| |badge4|
 
+.. |badge1| image:: https://travis-ci.org/adrianoveiga/django-media-fixtures.svg?branch=version/0.1.x
+    :target: https://travis-ci.org/adrianoveiga/django-media-fixtures
+    :alt: Build Status
+
+.. |badge2| image:: https://img.shields.io/pypi/v/django-media-fixtures/v0.1.0.svg
+    :target: https://pypi.org/project/django-media-fixtures/
+    :alt: PyPI Version
+
+.. |badge3| image:: https://img.shields.io/pypi/pyversions/django-media-fixtures/v0.1.0
+    :target: https://pypi.org/project/django-media-fixtures/
+    :alt: Python Versions
+
+.. |badge4| image:: https://img.shields.io/pypi/l/django-media-fixtures/v0.1.0
+    :target: https://pypi.org/project/django-media-fixtures/
+    :alt: License
 
 django-media-fixtures
 ------------------------
@@ -11,7 +25,9 @@ Simple project to copy media files (intended for fixtures loads), pretty much as
 Dependencies
 ------------
 
-- Django 1.8 or higher (not tested on previous versions)
+- Django >= 1.8 and < 3.0
+
+**Note**: This is the last version supporting Python2!
 
 
 Installation
@@ -19,7 +35,7 @@ Installation
 
 .. code-block:: python
 
-   pip install django-media-fixtures==0.0.3
+   pip install django-media-fixtures==0.1.0
 
 Then, put 'django_media_fixtures' on your INSTALLED_APPS (on settings.py), just below 'django.contrib.staticfiles'.
 

@@ -1,0 +1,8 @@
+-r requirements.txt
+
+coverage==5.1
+pytest==5.4.2
+pytest-django==3.9.0
+tox==3.15.0
+tox-pyenv==1.1.0
+tox-travis==0.12
