@@ -6,9 +6,7 @@ from django.apps import apps
 from django.conf import settings
 from django.contrib.staticfiles import utils
 from django.core.exceptions import ImproperlyConfigured
-from django.core.files.storage import (
-    FileSystemStorage, Storage, default_storage,
-)
+from django.core.files.storage import FileSystemStorage
 from django.utils._os import safe_join
 from django.utils.module_loading import import_string
 
@@ -24,6 +22,7 @@ class FileSystemFinder(BaseFinder):
     A media files finder that uses the ``MEDIA_FIXTURES_FILES_DIRS`` setting
     to locate files.
     """
+
     def __init__(self, app_names=None, *args, **kwargs):
         # List of locations with media_fixtures files
         self.locations = []
@@ -31,14 +30,16 @@ class FileSystemFinder(BaseFinder):
         self.storages = OrderedDict()
         if not isinstance(settings.MEDIA_FIXTURES_FILES_DIRS, (list, tuple)):
             raise ImproperlyConfigured(
-                "Your MEDIA_FIXTURES_FILES_DIRS setting is not a tuple or list; "
-                "perhaps you forgot a trailing comma?")
+                "Your MEDIA_FIXTURES_FILES_DIRS setting is not a tuple or "
+                " list; perhaps you forgot a trailing comma?")
         for root in settings.MEDIA_FIXTURES_FILES_DIRS:
             if isinstance(root, (list, tuple)):
                 prefix, root = root
             else:
                 prefix = ''
-            if settings.MEDIA_ROOT and os.path.abspath(settings.MEDIA_ROOT) == os.path.abspath(root):
+            if settings.MEDIA_ROOT and (
+                    os.path.abspath(settings.MEDIA_ROOT)
+                    == os.path.abspath(root)):
                 raise ImproperlyConfigured(
                     "The MEDIA_FIXTURES_FILES_DIRS setting should "
                     "not contain the MEDIA_ROOT setting")
@@ -97,7 +98,6 @@ class AppDirectoriesFinder(BaseFinder):
     """
     storage_class = FileSystemStorage
     source_dir = 'media_fixtures'
-    
     if hasattr(settings, 'MEDIA_FIXTURE_FOLDERNAME'):
         source_dir = settings.MEDIA_FIXTURE_FOLDERNAME
 
@@ -159,7 +159,7 @@ class AppDirectoriesFinder(BaseFinder):
 
 def get_finders():
     """
-    Set the media fixtures finders on settings.py. 
+    Set the media fixtures finders on settings.py.
     Example:
         MEDIA_FIXTURES_FILES_FINDERS = (
             'django_media_fixtures.finders.FileSystemFinder',
@@ -180,8 +180,8 @@ def get_finders():
 @lru_cache(maxsize=None)
 def get_finder(import_path):
     """
-    Imports the media fixtures files finder class described by import_path, where
-    import_path is the full Python path to the class.
+    Imports the media fixtures files finder class described by import_path,
+    where import_path is the full Python path to the class.
     """
     Finder = import_string(import_path)
     if not issubclass(Finder, BaseFinder):

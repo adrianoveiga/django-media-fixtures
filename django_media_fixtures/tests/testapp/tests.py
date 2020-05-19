@@ -1,11 +1,10 @@
 from django.test import TestCase
-from django_media_fixtures import finders
 from django.core.files.storage import default_storage as media_storage
 from django.core.management import call_command
- 
- 
+
+
 class TestCollectMedia(TestCase):
- 
+
     def test_sample_media_from_app_folder_collected(self):
         """
         Default behaviour, looking for the folder media_fixtures
