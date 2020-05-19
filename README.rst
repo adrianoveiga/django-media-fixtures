@@ -1,18 +1,22 @@
-|badge1| |badge2| |badge3| |badge4|
+|badge1| |badge2| |badge3| |badge4| |badge5|
 
 .. |badge1| image:: https://travis-ci.org/adrianoveiga/django-media-fixtures.svg?branch=master
     :target: https://travis-ci.org/adrianoveiga/django-media-fixtures
     :alt: Build Status
 
-.. |badge2| image:: https://img.shields.io/pypi/v/django-media-fixtures.svg
+.. |badge2| image:: https://coveralls.io/repos/github/adrianoveiga/django-media-fixtures/badge.svg?branch=master
+    :target: https://coveralls.io/github/adrianoveiga/django-media-fixtures?branch=master
+    :alt: Coverage
+
+.. |badge3| image:: https://img.shields.io/pypi/v/django-media-fixtures.svg
     :target: https://pypi.org/project/django-media-fixtures/
     :alt: PyPI Version
 
-.. |badge3| image:: https://img.shields.io/pypi/pyversions/django-media-fixtures.svg
+.. |badge4| image:: https://img.shields.io/pypi/pyversions/django-media-fixtures.svg
     :target: https://pypi.org/project/django-media-fixtures/
     :alt: Python Versions
 
-.. |badge4| image:: https://img.shields.io/pypi/l/django-media-fixtures.svg
+.. |badge5| image:: https://img.shields.io/pypi/l/django-media-fixtures.svg
     :target: https://pypi.org/project/django-media-fixtures/
     :alt: License
 
