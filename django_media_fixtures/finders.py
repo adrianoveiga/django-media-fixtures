@@ -81,7 +81,7 @@ class FileSystemFinder(BaseFinder):
         if os.path.exists(path):
             return path
 
-    def list(self, ignore_patterns):
+    def list(self, ignore_patterns=None):
         """
         List all files in all locations.
         """
@@ -119,7 +119,7 @@ class AppDirectoriesFinder(BaseFinder):
                     self.apps.append(app_config.name)
         super(AppDirectoriesFinder, self).__init__(*args, **kwargs)
 
-    def list(self, ignore_patterns):
+    def list(self, ignore_patterns=None):
         """
         List all files in all app storages.
         """

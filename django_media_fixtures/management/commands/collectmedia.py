@@ -236,14 +236,14 @@ class Command(BaseCommand):
             try:
                 # When was the target file modified last time?
                 target_last_modified = \
-                    self.storage.modified_time(prefixed_path)
+                    self.storage.get_modified_time(prefixed_path)
             except (OSError, NotImplementedError, AttributeError):
-                # The storage doesn't support ``modified_time`` or failed
+                # The storage doesn't support ``get_modified_time`` or failed
                 pass
             else:
                 try:
                     # When was the source file modified last time?
-                    source_last_modified = source_storage.modified_time(path)
+                    src_last_modified = source_storage.get_modified_time(path)
                 except (OSError, NotImplementedError, AttributeError):
                     pass
                 else:
@@ -255,7 +255,7 @@ class Command(BaseCommand):
                     # Skip the file if the source file is younger
                     # Avoid sub-second precision (see #14665, #19540)
                     if (target_last_modified.replace(microsecond=0)
-                            >= source_last_modified.replace(microsecond=0)):
+                            >= src_last_modified.replace(microsecond=0)):
                         if not ((self.symlink and full_path
                                  and not os.path.islink(full_path)) or
                                 (not self.symlink and full_path
