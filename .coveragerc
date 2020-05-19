@@ -1,0 +1,5 @@
+[run]
+source = django_media_fixtures
+
+[report]
+show_missing = True
