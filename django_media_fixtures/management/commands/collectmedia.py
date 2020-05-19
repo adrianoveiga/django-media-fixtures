@@ -1,28 +1,26 @@
-from __future__ import unicode_literals
-
 import os
 from collections import OrderedDict
 
-from django.contrib.staticfiles.storage import staticfiles_storage
 from django.core.files.storage import FileSystemStorage
 from django.core.management.base import BaseCommand, CommandError
 from django.core.management.color import no_style
 from django.utils.encoding import smart_text
-from django.utils.six.moves import input
 
 from django.core.files.storage import default_storage as media_storage
 from django_media_fixtures.finders import get_finders
+
 
 class Command(BaseCommand):
     """
     Command that allows to copy or symlink media files from different
     locations to the settings.MEDIA_ROOT.
 
-    Django manage command with HUGE inspiration on collectstatic, but for media files.
+    Django manage command with HUGE inspiration on collectstatic,
+    but for media files.
 
-    NOTE: You can choose your media files fixtures folder name in settings, like:
+    NOTE: You can choose your media files fixtures folder name in settings:
             MEDIA_FIXTURE_FOLDERNAME = 'media_fixtures'
-    """    
+    """
     help = "Collect media (fixtures) files in a single location."
     requires_system_checks = False
 
@@ -42,30 +40,37 @@ class Command(BaseCommand):
             self.local = True
 
     def add_arguments(self, parser):
-        parser.add_argument('--noinput',
+        parser.add_argument(
+            '--noinput',
             action='store_false', dest='interactive', default=True,
             help="Do NOT prompt the user for input of any kind.")
-        parser.add_argument('--no-post-process',
+        parser.add_argument(
+            '--no-post-process',
             action='store_false', dest='post_process', default=True,
             help="Do NOT post process collected files.")
-        parser.add_argument('-i', '--ignore', action='append', default=[],
+        parser.add_argument(
+            '-i', '--ignore', action='append', default=[],
             dest='ignore_patterns', metavar='PATTERN',
             help="Ignore files or directories matching this glob-style "
-                "pattern. Use multiple times to ignore more.")
-        parser.add_argument('-n', '--dry-run',
+                 "pattern. Use multiple times to ignore more.")
+        parser.add_argument(
+            '-n', '--dry-run',
             action='store_true', dest='dry_run', default=False,
             help="Do everything except modify the filesystem.")
-        parser.add_argument('-c', '--clear',
+        parser.add_argument(
+            '-c', '--clear',
             action='store_true', dest='clear', default=False,
             help="Clear the existing files using the storage "
                  "before trying to copy or link the original file.")
-        parser.add_argument('-l', '--link',
+        parser.add_argument(
+            '-l', '--link',
             action='store_true', dest='link', default=False,
             help="Create a symbolic link to each file instead of copying.")
-        parser.add_argument('--no-default-ignore', action='store_false',
+        parser.add_argument(
+            '--no-default-ignore', action='store_false',
             dest='use_default_ignore_patterns', default=True,
             help="Don't ignore the common private glob-style patterns 'CVS', "
-                "'.*' and '*~'.")
+                 "'.*' and '*~'.")
 
     def set_options(self, **options):
         """
@@ -119,7 +124,8 @@ class Command(BaseCommand):
                                                   dry_run=self.dry_run)
             for original_path, processed_path, processed in processor:
                 if isinstance(processed, Exception):
-                    self.stderr.write("Post-processing '%s' failed!" % original_path)
+                    self.stderr.write("Post-processing '%s' failed!"
+                                      % original_path)
                     # Add a blank line before the traceback, otherwise it's
                     # too easy to miss the relevant part of the error message.
                     self.stderr.write("")
@@ -143,7 +149,8 @@ class Command(BaseCommand):
         message = ['\n']
         if self.dry_run:
             message.append(
-                'You have activated the --dry-run option so no files will be modified.\n\n'
+                'You have activated the --dry-run option '
+                'so no files will be modified.\n\n'
             )
 
         message.append(
@@ -156,9 +163,9 @@ class Command(BaseCommand):
             message.append(':\n\n    %s\n\n' % destination_path)
         else:
             destination_path = None
-            #message.append('.\n\n')
             from django.conf import settings
-            message.append(':\n\n    url: %s\n    relative path: %s\n\n' % (settings.MEDIA_URL, settings.MEDIA_ROOT) )
+            message.append(':\n\n    url: %s\n    relative path: %s\n\n'
+                           % (settings.MEDIA_URL, settings.MEDIA_ROOT))
 
         if self.clear:
             message.append('This will DELETE ALL FILES in this location!\n')
@@ -181,12 +188,14 @@ class Command(BaseCommand):
         if self.verbosity >= 1:
             template = ("\n%(modified_count)s %(identifier)s %(action)s"
                         "%(destination)s%(unmodified)s%(post_processed)s.\n")
+            identifier = 'media file' + ('' if modified_count == 1 else 's')
+            destination_path = destination_path if destination_path else ''
             summary = template % {
                 'modified_count': modified_count,
-                'identifier': 'media file' + ('' if modified_count == 1 else 's'),
+                'identifier': identifier,
                 'action': 'symlinked' if self.symlink else 'copied',
-                'destination': (" to '%s'" % destination_path if destination_path else ''),
-                'unmodified': (', %s unmodified' % unmodified_count if collected['unmodified'] else ''),
+                'destination': (" to '%s'" % destination_path),
+                'unmodified': (', %s unmodified' % unmodified_count),
                 'post_processed': (collected['post_processed'] and
                                    ', %s post-processed'
                                    % post_processed_count or ''),
@@ -227,14 +236,14 @@ class Command(BaseCommand):
             try:
                 # When was the target file modified last time?
                 target_last_modified = \
-                    self.storage.modified_time(prefixed_path)
+                    self.storage.get_modified_time(prefixed_path)
             except (OSError, NotImplementedError, AttributeError):
-                # The storage doesn't support ``modified_time`` or failed
+                # The storage doesn't support ``get_modified_time`` or failed
                 pass
             else:
                 try:
                     # When was the source file modified last time?
-                    source_last_modified = source_storage.modified_time(path)
+                    src_last_modified = source_storage.get_modified_time(path)
                 except (OSError, NotImplementedError, AttributeError):
                     pass
                 else:
@@ -246,7 +255,7 @@ class Command(BaseCommand):
                     # Skip the file if the source file is younger
                     # Avoid sub-second precision (see #14665, #19540)
                     if (target_last_modified.replace(microsecond=0)
-                            >= source_last_modified.replace(microsecond=0)):
+                            >= src_last_modified.replace(microsecond=0)):
                         if not ((self.symlink and full_path
                                  and not os.path.islink(full_path)) or
                                 (not self.symlink and full_path
@@ -291,8 +300,8 @@ class Command(BaseCommand):
                 os.symlink(source_path, full_path)
             except AttributeError:
                 import platform
-                raise CommandError("Symlinking is not supported by Python %s." %
-                                   platform.python_version())
+                raise CommandError("Symlinking is not supported by Python %s."
+                                   % platform.python_version())
             except NotImplementedError:
                 import platform
                 raise CommandError("Symlinking is not supported in this "

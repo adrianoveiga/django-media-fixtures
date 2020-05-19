@@ -20,7 +20,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'django_media_fixtures',  # include this to work, bellow django.contrib.staticfiles
+    'django_media_fixtures',  # include bellow django.contrib.staticfiles
     'django_media_fixtures.tests.testapp.apps.TestAppConfig',
 )
 
@@ -76,8 +76,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Media fixtures configurations
 
 MEDIA_FIXTURES_FILES_FINDERS = (
-    'django_media_fixtures.finders.FileSystemFinder',      # combined with MEDIA_FIXTURES_FILES_DIRS, choose specific folders
-    'django_media_fixtures.finders.AppDirectoriesFinder',  # default (if you do not set MEDIA_FIXTURES_FILES_FINDERS)
+    # combined with MEDIA_FIXTURES_FILES_DIRS, choose specific folders
+    'django_media_fixtures.finders.FileSystemFinder',
+    # default (if you do not set MEDIA_FIXTURES_FILES_FINDERS)
+    'django_media_fixtures.finders.AppDirectoriesFinder',
 )
 MEDIA_FIXTURES_FILES_DIRS = [
     os.path.join(BASE_DIR, 'extra_media_fixtures'),
