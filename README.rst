@@ -71,17 +71,17 @@ Configurations
 --------------
 
 - MEDIA_FIXTURE_FOLDERNAME
-    You can change the media fixtures folder's name on your apps, just putting this variable on settings.py. 
+    You can change the media fixtures folder's name on your apps, just putting this variable on settings.py.
 
     .. code-block:: python
-        
+
         MEDIA_FIXTURE_FOLDERNAME='my_media_fixtures_folder'
 
 - MEDIA_FIXTURES_FILES_FINDERS
-    You can change the media fixtures finders, to search media files on other folders not in-app, for instance. 
-    
+    You can change the media fixtures finders, to search media files on other folders not in-app, for instance.
+
     .. code-block:: python
-        
+
         MEDIA_FIXTURES_FILES_FINDERS = (
                 'django_media_fixtures.finders.FileSystemFinder',      # combined with MEDIA_FIXTURES_FILES_DIRS, choose specific folders
                 'django_media_fixtures.finders.AppDirectoriesFinder',  # default (if you do not set MEDIA_FIXTURES_FILES_FINDERS)
