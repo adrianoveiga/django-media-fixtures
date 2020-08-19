@@ -21,9 +21,9 @@
     :alt: License
 
 django-media-fixtures
-------------------------
+---------------------
 
-Simple project to copy media files (intended for fixtures loads), pretty much as staticfiles does.
+Simple project to copy media files (intended for fixtures loads) to the file storage, pretty much as the `django.contrib.staticfiles` app does.
 
 
 Dependencies
