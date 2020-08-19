@@ -57,23 +57,23 @@ Then, add the `django_media_fixtures` app in your `settings.INSTALLED_APPS`::
 Usage
 -----
 
-Just call manage command 'collectmedia', same as you do with collectstatic:
+The app provides a management command `collectmedia`:
 
 .. code-block:: python
 
     python manage.py collectmedia
 
-And then all files on 'media_fixtures' folder in-apps will be copied to your MEDIA_ROOT.
+This works similarly to `collectstatic`: finds the `media_fixtures` subdirectory in the apps directories, and copies those files to the `settings.MEDIA_ROOT`.
 
-So, when you create your fixture (for any ways, even through shell), put your file path matching the same tree folder view as your media file.
+So, when you create your fixture (by any means, even through shell), put your file path matching the same tree folder layout as it should be in the `MEDIA_ROOT` destination.
 
-For instance,
+For instance:
 
 .. code-block:: python
 
-    YourModel.objects.get_or_create(image="uploads/yourmodel/img/example.jpg")
+    YourModel.objects.get_or_create(image="uploads/yourmodel/img/example.jpeg")
 
-Where the file 'example.jpg' is on: yourappfolder/media_fixtures/uploads/yourmodel/img/example.jpg
+Where the file `example.jpeg` is found in `yourappfolder/media_fixtures/uploads/yourmodel/img/example.jpeg`. The `collectmedia` management command will copy this file to `uploads/yourmodel/img/example.jpeg` inside the `settings.MEDIA_ROOT` directory.
 
 
 Configurations
