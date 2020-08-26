@@ -42,9 +42,9 @@ Installation
 
    pip install django-media-fixtures==1.0.0
 
-Then, add the `django_media_fixtures` app in your `settings.INSTALLED_APPS`::
+Then, add the ``django_media_fixtures`` app in your ``settings.INSTALLED_APPS``:
 
-..  code-block:: python
+.. code-block:: python
 
     INSTALLED_APPS = [
         ...,
@@ -57,15 +57,15 @@ Then, add the `django_media_fixtures` app in your `settings.INSTALLED_APPS`::
 Usage
 -----
 
-The app provides a management command `collectmedia`:
+The app provides a management command ``collectmedia``:
 
 .. code-block:: python
 
     python manage.py collectmedia
 
-This works similarly to `collectstatic`: finds the `media_fixtures` subdirectory in the apps directories, and copies those files to the `settings.MEDIA_ROOT`.
+This works similarly to ``collectstatic``: finds the ``media_fixtures`` subdirectory in the apps directories, and copies those files to the ``settings.MEDIA_ROOT``.
 
-So, when you create your fixture (by any means, even through shell), put your file path matching the same tree folder layout as it should be in the `MEDIA_ROOT` destination.
+So, when you create your fixture (by any means, even through shell), put your file path matching the same tree folder layout as it should be in the ``MEDIA_ROOT`` destination.
 
 For instance:
 
@@ -73,7 +73,7 @@ For instance:
 
     YourModel.objects.get_or_create(image="uploads/yourmodel/img/example.jpeg")
 
-Where the file `example.jpeg` is found in `yourappfolder/media_fixtures/uploads/yourmodel/img/example.jpeg`. The `collectmedia` management command will copy this file to `uploads/yourmodel/img/example.jpeg` inside the `settings.MEDIA_ROOT` directory.
+Where the file ``example.jpeg`` is found in ``yourappfolder/media_fixtures/uploads/yourmodel/img/example.jpeg``. The ``collectmedia`` management command will copy this file to ``uploads/yourmodel/img/example.jpeg`` inside the ``settings.MEDIA_ROOT`` directory.
 
 
 Configurations
