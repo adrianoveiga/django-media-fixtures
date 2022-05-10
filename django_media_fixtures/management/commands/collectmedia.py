@@ -4,7 +4,7 @@ from collections import OrderedDict
 from django.core.files.storage import FileSystemStorage
 from django.core.management.base import BaseCommand, CommandError
 from django.core.management.color import no_style
-from django.utils.encoding import smart_text
+from django.utils.encoding import smart_str
 
 from django.core.files.storage import default_storage as media_storage
 from django_media_fixtures.finders import get_finders
@@ -221,9 +221,9 @@ class Command(BaseCommand):
             fpath = os.path.join(path, f)
             if self.dry_run:
                 self.log("Pretending to delete '%s'" %
-                         smart_text(fpath), level=1)
+                         smart_str(fpath), level=1)
             else:
-                self.log("Deleting '%s'" % smart_text(fpath), level=1)
+                self.log("Deleting '%s'" % smart_str(fpath), level=1)
                 self.storage.delete(fpath)
         for d in dirs:
             self.clear_dir(os.path.join(path, d))
