@@ -44,11 +44,11 @@ setup(
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/adrianoveiga/django-media-fixtures.git',
+    url='https://github.com/pojoba02/django-media-fixtures.git',
 
     # Author details
-    author='Adriano Veiga',
-    author_email='profpardal.88@gmail.com',
+    author='Francis I AM',
+    author_email='pojoba01@gmail.com',
 
     # Choose your license
     license='MIT',
@@ -72,6 +72,7 @@ setup(
         'Framework :: Django :: 2.0',
         'Framework :: Django :: 2.2',
         'Framework :: Django :: 3.0',
+        'Framework :: Django :: 4.0',
 
         # Pick your license as you wish (should match "license" above)
         'License :: OSI Approved :: MIT License',
@@ -83,6 +84,10 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
         'Programming Language :: Python :: 3 :: Only',
     ],
 
