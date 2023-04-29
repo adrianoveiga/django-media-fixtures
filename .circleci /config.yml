@@ -1,31 +1,33 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine.
-# See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
-# Define a job to be invoked later in a workflow.
-# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   build:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
       - image: cimg/python:3.11
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     working_directory: ~/repo
-    
-    
-    - run:
-        name: run tests
-    
-    
-    
+    steps:
+      - run:
+          name: run tests
+          command: |
+            echo "Running tests"
+
+  deploy:
+    docker:
+      - image: cimg/python:3.11
+    working_directory: ~/repo
+    steps:
+      - run:
+          name: deploy app
+          command: |
+            echo "Deploying app"
+
 workflows:
   build:
     jobs:
-    - build
-    - deploy:
-        filters:
-          branches:
-            only:
-            - master  
+      - build
+      - deploy:
+          filters:
+            branches:
+              only:
+                - master
+
