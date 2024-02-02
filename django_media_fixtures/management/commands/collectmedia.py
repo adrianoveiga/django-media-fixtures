@@ -4,10 +4,17 @@ from collections import OrderedDict
 from django.core.files.storage import FileSystemStorage
 from django.core.management.base import BaseCommand, CommandError
 from django.core.management.color import no_style
-from django.utils.encoding import smart_text
 
 from django.core.files.storage import default_storage as media_storage
 from django_media_fixtures.finders import get_finders
+
+try:
+    from django.utils.encoding import smart_text
+    _requires_system_checks = False
+except ImportError:  # Django >= 4.0
+    from django.utils.encoding import smart_str as smart_text
+    from django.core.management.base import ALL_CHECKS
+    _requires_system_checks = ALL_CHECKS
 
 
 class Command(BaseCommand):
@@ -22,7 +29,7 @@ class Command(BaseCommand):
             MEDIA_FIXTURE_FOLDERNAME = 'media_fixtures'
     """
     help = "Collect media (fixtures) files in a single location."
-    requires_system_checks = False
+    requires_system_checks = _requires_system_checks
 
     def __init__(self, *args, **kwargs):
         super(Command, self).__init__(*args, **kwargs)
